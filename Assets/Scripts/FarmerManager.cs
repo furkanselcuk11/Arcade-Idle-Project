@@ -1,0 +1,62 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class FarmerManager : MonoBehaviour
+{
+    public List<GameObject> fruitList = new List<GameObject>(); // Oluþturulan meyvelerin tutulduðu liste    
+
+    public GameObject fruitPrefab;    // Oluþturulacak obje
+    [SerializeField] private float spawnerTime = 0.5f;  //Meyve oluþturma süresi
+    [SerializeField] private float fruitBetween = 10f;  //Meyveler arasý mesafe
+    [SerializeField] private int maxFruit = 50; // Toplam çýkarilacak meyve sayýsý
+    [SerializeField] private int stackCount = 10;   // Bir sýrada oluþacak meyve sayýsý
+    [SerializeField] private Transform spawnPoint;  // Meyvelerin Çýkarýlacaðý pozisyon
+    bool isWorking;
+    void Start()
+    {
+        StartCoroutine(nameof(FarmerFruitSpawner));
+    }    
+    void Update()
+    {
+        
+    }
+    IEnumerator FarmerFruitSpawner()
+    {
+        while (true)
+        {
+            float fruitCount = fruitList.Count;
+            int colCount = (int)fruitCount / stackCount;    // Bir sýrada oluþacak meyve sayýsý
+
+            if (isWorking)  // Eðer farmer çalþýyorsa
+            {
+                GameObject newFruit = Instantiate(fruitPrefab);   // Yeni Meyve oluþtur
+                newFruit.transform.position = new Vector3(spawnPoint.position.x+((fruitCount % stackCount) / fruitBetween),
+                    spawnPoint.position.y+0.1f,
+                    spawnPoint.position.z + ((float)colCount / 3));    
+                fruitList.Add(newFruit); // Yeni oluþturulan meyveyi fruitList listesine ekle
+
+                if (fruitList.Count>=maxFruit)
+                {
+                    isWorking = false;  // Eðer toplam çýkarýlan Fruit Sayýsý maxFruit sayýsýna büyük eþit ise çalýþma pasif olur
+                }
+            }
+            else if (fruitList.Count < maxFruit)
+            {
+                isWorking = true;   // Eðer toplam çýkarýlan Fruit Sayýsý maxFruit sayýsýndan az ise çalýþma aktif olur
+            }            
+
+            yield return new WaitForSeconds(spawnerTime);   // Her spawnerTime süresinde bir Meyve oluþtur
+        }        
+    }
+    public void RemoveLastFruit()
+    {
+        // Karaket FarmerField alanýnda meyve topladýðýnda son oluþturulan meyveyi toplar ve silinir
+        if (fruitList.Count > 0)
+        {
+            // Eðer toplanacak meyve var ise son meyveyi sil
+            Destroy(fruitList[fruitList.Count - 1]);
+            fruitList.RemoveAt(fruitList.Count - 1);
+        }
+    }
+}
