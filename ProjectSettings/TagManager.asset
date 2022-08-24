@@ -8,6 +8,7 @@ TagManager:
   - FruitGiveArea
   - Money
   - MoneyArea
+  - BuyArea
   layers:
   - Default
   - TransparentFX

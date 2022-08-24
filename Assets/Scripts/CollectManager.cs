@@ -19,6 +19,7 @@ public class CollectManager : MonoBehaviour
     {
         TriggerEventManager.OnFruitCollet -= GetFruit;  // Eðer Meyve toplama alanýndan çýkmýþsa GetFruit fonkisyonu durdurulur
         TriggerEventManager.OnFruitGive -= GiveShopFruit;  // Eðer Meyve býrakma alanýndan çýkmýþsa GiveShopFruit fonkisyonu durdurulur
+
     }
     private void GetFruit()
     {
@@ -27,6 +28,7 @@ public class CollectManager : MonoBehaviour
         {
             // Eðer karakterin topladðý meyve sayýsý fruitCollectLimit sayýsýndan az ise toplar
             GameObject newCollectFruit = Instantiate(TriggerEventManager.farmerManager.fruitPrefab,collectPoint);   // Yeni Meyve oluþtur
+            newCollectFruit.name = TriggerEventManager.farmerManager.fruitPrefab.name;
             newCollectFruit.transform.position = new Vector3(collectPoint.position.x,
                 ((float)fruitList.Count / fruitBetween) + collectPoint.position.y,
                 collectPoint.position.z);    // Yeni Fruit objesini pozisyonu belirlenir    

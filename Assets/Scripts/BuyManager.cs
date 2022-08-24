@@ -8,11 +8,13 @@ public class BuyManager : MonoBehaviour
 
     private void OnEnable()
     {
-        TriggerEventManager.onMoneyCollected += IncreaseMoney;
+        TriggerEventManager.OnMoneyCollected += IncreaseMoney;
+        TriggerEventManager.OnBuyShopAndFarmer += BuyArea;
     }
     private void OnDisable()
     {
-        TriggerEventManager.onMoneyCollected -= IncreaseMoney;
+        TriggerEventManager.OnMoneyCollected -= IncreaseMoney;
+        TriggerEventManager.OnBuyShopAndFarmer -= BuyArea;
     }
     void Start()
     {
@@ -23,8 +25,23 @@ public class BuyManager : MonoBehaviour
     {
         
     }
+    void BuyArea()
+    {
+        if (TriggerEventManager.buyArea != null)
+        {
+            if (totalMoney >= 1)
+            {
+                TriggerEventManager.buyArea.Buy(1);
+                totalMoney -= 1;
+            }
+        }
+    }
     private void IncreaseMoney()
     {
-        totalMoney += 5;
+        if (TriggerEventManager.shopManager.moneyList.Count > 0)
+        {
+            totalMoney += 5;    // Para deðerini arttýr
+            TriggerEventManager.shopManager.RemoveLastMoney();  // Her para kazanýldýðýnda money listesindeki paralar çýkarýlýr
+        }        
     }
 }
