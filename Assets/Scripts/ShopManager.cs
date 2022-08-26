@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class ShopManager : MonoBehaviour
 {
@@ -8,19 +9,26 @@ public class ShopManager : MonoBehaviour
     public List<GameObject> moneyList = new List<GameObject>(); // Oluþturulan meyvelerin tutulduðu liste
     [Space]
     [Header("Shop Fruit Genarete")]
-    [SerializeField] private GameObject fruitPrefab;    // Oluþturulacak obje
-    [SerializeField] private GameObject[] fruitPrefabs;    // Oluþturulacak obje
-    [SerializeField] private float fruitBetween;
-    [SerializeField] private int stackCount = 10;   // Bir sýrada oluþacak meyve sayýsý
+    [SerializeField] private GameObject fruitPrefab;    // Oluþturulacak meyve
+    [SerializeField] private GameObject[] fruitPrefabs;    // Oluþturulacak meyvelerin listesi
+    [SerializeField] private float fruitBetween=6;
+    [SerializeField] private int stackCount = 10;   // X ekseninde oluþacak  meyve sayýsý
     [SerializeField] private Transform givePoint;  // Meyvelerin Çýkarýlacaðý pozisyon
     [Space]
     [Header("Shop Money Genarete")]
     [SerializeField] private GameObject moneyPrefab;    // Oluþturulacak obje
     [SerializeField] private GameObject rotateMoney;    // Oluþturulacak obje
-    [SerializeField] private float moneySpawnerTime = 0.5f;  //Meyve oluþturma süresi
+    [SerializeField] private float moneySpawnerTime = 0.8f;  //Meyve oluþturma süresi
     [SerializeField] private float moneyBetween = 4f;  //Meyveler arasý mesafe
-    [SerializeField] private int moneyStackCount = 10;   // Bir sýrada oluþacak meyve sayýsý
-    [SerializeField] private Transform moneySpawnPoint;  // Meyvelerin Çýkarýlacaðý pozisyon
+    [SerializeField] private int moneyStackCountX = 5;   // X ekseninde oluþacak para sayýsý
+    [SerializeField] private int moneyStackCountY = 25;   // Y ekseninde oluþacak para sayýsý
+    [SerializeField] private Transform moneySpawnPoint;  // Paralarýn Çýkarýlacaðý pozisyon
+    [Space]
+    [Header("Shop Money Dotween")]
+    [SerializeField] private float duration;    // Shake süresi
+    [SerializeField] private float strength;    // Shake gücü
+    [SerializeField] private int vibrato;   // Titreþim sayýsý
+    [SerializeField] private float randomness;  // Randomluk
 
     private void Start()
     {
@@ -35,13 +43,15 @@ public class ShopManager : MonoBehaviour
             {
                 //Eðer Shop'ta meyve varsa para üret
                 float moneyCount = moneyList.Count;
-                int colCount = (int)moneyCount / moneyStackCount;    // Bir sýrada oluþacak para sayýsý
+                int colCount = (int)moneyCount / moneyStackCountX;    // Bir sýrada oluþacak para sayýsý
+                int rowCount = (int)moneyCount / moneyStackCountY;    // Bir sýrada oluþacak para sayýsý
 
                 GameObject newMoney = Instantiate(moneyPrefab);   // Yeni para oluþtur
-                newMoney.transform.position = new Vector3(moneySpawnPoint.position.x + ((moneyCount % moneyStackCount) / moneyBetween),
-                            moneySpawnPoint.position.y+0.05f,
-                            moneySpawnPoint.position.z + ((float)colCount / 2));
-                moneyList.Add(newMoney); // Yeni oluþturulan parayý moneyList listesine ekle
+                newMoney.transform.position = new Vector3(moneySpawnPoint.position.x + ((moneyCount % moneyStackCountX) / moneyBetween),
+                            moneySpawnPoint.position.y + ((float)rowCount / 10)+0.05f,
+                            moneySpawnPoint.position.z+ ((float)colCount / 2) - ((2 * rowCount) + ((float)rowCount / 2f)));
+                newMoney.transform.DOShakeScale(duration, strength, vibrato, randomness);
+                moneyList.Add(newMoney); // Yeni oluþturulan parayý moneyList listesine ekle                
                 RemoveLastFruit();
             }
             yield return new WaitForSeconds(moneySpawnerTime);
@@ -51,6 +61,7 @@ public class ShopManager : MonoBehaviour
     {
         if (moneyList.Count > 0)
         {
+            // Eðer Shop para üretmiþ ve moneyList en az 1 atne para varsa ise Shop üzerindeki para ikonu aktif hale gelir 
             rotateMoney.SetActive(true);
         }
         else
@@ -59,11 +70,7 @@ public class ShopManager : MonoBehaviour
         }
     }
     public void GetFruit()
-    {
-        //GameObject newGiveFruit = Instantiate(TriggerEventManager.farmerManager.fruitPrefab, givePoint);   // Yeni Meyve oluþtur
-        //newFruit.transform.position = new Vector3(spawnPoint.position.x+((float)colCount/3),
-        //    ((fruitCount%stackCount) / fruitBetween) + 0.1f, 
-        //    spawnPoint.position.z);    // Yeni Fruit objesini pozisyonu belirlenir
+    {        
 
         // Karakteren gelecek meyveler ile Meyve oluþtur
         float fruitCount = fruitList.Count;

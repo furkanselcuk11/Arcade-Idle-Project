@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class FarmerManager : MonoBehaviour
 {
@@ -13,6 +14,13 @@ public class FarmerManager : MonoBehaviour
     [SerializeField] private int stackCount = 10;   // Bir sýrada oluþacak meyve sayýsý
     [SerializeField] private Transform spawnPoint;  // Meyvelerin Çýkarýlacaðý pozisyon
     bool isWorking;
+
+    [Space]
+    [Header("Fruit Jump Dotween")]
+    [SerializeField] private GameObject jumpFruitObject;
+    [SerializeField] private float jumpPower;    // Zýplama gücü
+    [SerializeField] private int jumpCount;    // Zýplama sayýsý
+    [SerializeField] private float duration;   // Zýplama süresi
     void Start()
     {
         StartCoroutine(nameof(FarmerFruitSpawner));
@@ -35,6 +43,7 @@ public class FarmerManager : MonoBehaviour
                     spawnPoint.position.y+0.1f,
                     spawnPoint.position.z + ((float)colCount / 3));    
                 fruitList.Add(newFruit); // Yeni oluþturulan meyveyi fruitList listesine ekle
+                jumpFruitObject.transform.DOJump(new Vector3(newFruit.transform.position.x,0f,newFruit.transform.position.z), jumpPower, jumpCount, duration);
 
                 if (fruitList.Count>=maxFruit)
                 {

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 7849572455914681562}
   - component: {fileID: 6575417196232784767}
   - component: {fileID: 8981413868779851701}
-  - component: {fileID: 126101616052101401}
   m_Layer: 0
   m_Name: dollar
   m_TagString: Money
@@ -84,16 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &126101616052101401
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7468261361597574752}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.9568553, y: 6.1134067, z: 0.9600538}
-  m_Center: {x: 0, y: 0, z: 0}
