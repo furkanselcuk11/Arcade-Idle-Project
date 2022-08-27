@@ -13,7 +13,16 @@ public class FarmerManager : MonoBehaviour
     [SerializeField] private int maxFruit = 50; // Toplam çýkarilacak meyve sayýsý
     [SerializeField] private int stackCount = 10;   // Bir sýrada oluþacak meyve sayýsý
     [SerializeField] private Transform spawnPoint;  // Meyvelerin Çýkarýlacaðý pozisyon
-    bool isWorking;
+    public bool isWorking;
+    [Space]
+    [Header("Object Pool")]
+    [SerializeField] private ObjectPool objectPool = null;
+    [SerializeField] private int poolValue = 0;
+    public int publicpoolValue
+    {
+        get { return poolValue; }
+        set { poolValue = value; }
+    }
 
     [Space]
     [Header("Fruit Jump Dotween")]
@@ -34,18 +43,18 @@ public class FarmerManager : MonoBehaviour
         while (true)
         {
             float fruitCount = fruitList.Count;
-            int colCount = (int)fruitCount / stackCount;    // Bir sýrada oluþacak meyve sayýsý
+            int colCount = (int)fruitCount / stackCount;    // Bir sýrada oluþacak meyve sayýsý    
 
+            // #objectPool ile ekleme
             if (isWorking)  // Eðer farmer çalþýyorsa
             {
-                GameObject newFruit = Instantiate(fruitPrefab);   // Yeni Meyve oluþtur
-                newFruit.transform.position = new Vector3(spawnPoint.position.x+((fruitCount % stackCount) / fruitBetween),
-                    spawnPoint.position.y+0.1f,
-                    spawnPoint.position.z + ((float)colCount / 3));    
+                GameObject newFruit = objectPool.GetPooledObject(poolValue);    // "ObjectPool" scriptinden yeni nesne çeker ve aktif hale getirir
+                newFruit.transform.position = new Vector3(spawnPoint.position.x + ((fruitCount % stackCount) / fruitBetween),
+                    spawnPoint.position.y + 0.1f,
+                    spawnPoint.position.z + ((float)colCount / 3));
                 fruitList.Add(newFruit); // Yeni oluþturulan meyveyi fruitList listesine ekle
-                jumpFruitObject.transform.DOJump(new Vector3(newFruit.transform.position.x,0f,newFruit.transform.position.z), jumpPower, jumpCount, duration);
-
-                if (fruitList.Count>=maxFruit)
+                jumpFruitObject.transform.DOJump(new Vector3(newFruit.transform.position.x, 0f, newFruit.transform.position.z), jumpPower, jumpCount, duration); // Dotween ile yere düþmesi ayarlanýr
+                if (fruitList.Count >= maxFruit)
                 {
                     isWorking = false;  // Eðer toplam çýkarýlan Fruit Sayýsý maxFruit sayýsýna büyük eþit ise çalýþma pasif olur
                 }
@@ -53,7 +62,7 @@ public class FarmerManager : MonoBehaviour
             else if (fruitList.Count < maxFruit)
             {
                 isWorking = true;   // Eðer toplam çýkarýlan Fruit Sayýsý maxFruit sayýsýndan az ise çalýþma aktif olur
-            }            
+            }
 
             yield return new WaitForSeconds(spawnerTime);   // Her spawnerTime süresinde bir Meyve oluþtur
         }        
@@ -64,8 +73,9 @@ public class FarmerManager : MonoBehaviour
         if (fruitList.Count > 0)
         {
             // Eðer toplanacak meyve var ise son meyveyi sil
-            Destroy(fruitList[fruitList.Count - 1]);
-            fruitList.RemoveAt(fruitList.Count - 1);
+            // #objectPool ile silme
+            objectPool.SetPooledObject(fruitList[fruitList.Count - 1], poolValue);  // objectPool ile aktif hale gelen objeyi pasif hale getirir
+            fruitList.RemoveAt(fruitList.Count - 1);    // fruitList listesinden siler
         }
     }
 }

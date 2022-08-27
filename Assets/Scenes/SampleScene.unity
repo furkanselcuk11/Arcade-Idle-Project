@@ -1406,7 +1406,7 @@ GameObject:
   m_Layer: 0
   m_Name: SpawnPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2179,7 +2179,7 @@ Transform:
   - {fileID: 1116365851}
   - {fileID: 494394997}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!65 &247620591
 BoxCollider:
@@ -2213,6 +2213,9 @@ MonoBehaviour:
   maxFruit: 150
   stackCount: 15
   spawnPoint: {fileID: 494394997}
+  isWorking: 0
+  objectPool: {fileID: 1238321739}
+  poolValue: 2
   jumpFruitObject: {fileID: 6313616518371778082}
   jumpPower: 0.5
   jumpCount: 1
@@ -3499,7 +3502,7 @@ GameObject:
   m_Layer: 0
   m_Name: MoneySpawnPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -4279,7 +4282,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &457647232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4310,6 +4313,8 @@ MonoBehaviour:
   moneyStackCountX: 5
   moneyStackCountY: 10
   moneySpawnPoint: {fileID: 410711040}
+  objectPool: {fileID: 0}
+  poolValue: 0
   duration: 0
   strength: 0
   vibrato: 0
@@ -4672,7 +4677,7 @@ GameObject:
   m_Layer: 0
   m_Name: SpawnPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -6130,7 +6135,7 @@ GameObject:
   m_Layer: 0
   m_Name: GivePoint
   m_TagString: Untagged
-  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -6784,7 +6789,7 @@ GameObject:
   m_Layer: 0
   m_Name: SpawnPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -7322,6 +7327,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 778079934}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &781098709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 781098710}
+  m_Layer: 0
+  m_Name: FruitObjects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &781098710
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781098709}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &790919551
 GameObject:
   m_ObjectHideFlags: 0
@@ -7417,7 +7453,7 @@ GameObject:
   m_Layer: 0
   m_Name: CollectPoint
   m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -7817,6 +7853,10 @@ MonoBehaviour:
   progress: 0
   progressImage: {fileID: 304083172}
   areaText: {fileID: 1308237040}
+  duration: 1
+  strength: 0.5
+  vibrato: 10
+  randomness: 90
 --- !u!1 &871941524
 GameObject:
   m_ObjectHideFlags: 0
@@ -8507,7 +8547,7 @@ Transform:
   - {fileID: 889394765}
   - {fileID: 146702270}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!65 &917269226
 BoxCollider:
@@ -8541,6 +8581,9 @@ MonoBehaviour:
   maxFruit: 150
   stackCount: 15
   spawnPoint: {fileID: 146702270}
+  isWorking: 0
+  objectPool: {fileID: 1238321739}
+  poolValue: 3
   jumpFruitObject: {fileID: 993093072842159488}
   jumpPower: 0.5
   jumpCount: 1
@@ -11394,7 +11437,7 @@ Transform:
   - {fileID: 1812443674}
   - {fileID: 1697183675}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!65 &1199041619
 BoxCollider:
@@ -11428,10 +11471,13 @@ MonoBehaviour:
   maxFruit: 150
   stackCount: 15
   spawnPoint: {fileID: 1697183675}
+  isWorking: 0
+  objectPool: {fileID: 1238321739}
+  poolValue: 1
   jumpFruitObject: {fileID: 1475993457}
   jumpPower: 2
   jumpCount: 1
-  duration: 0.2
+  duration: 0.3
 --- !u!1 &1227717516
 GameObject:
   m_ObjectHideFlags: 0
@@ -11561,6 +11607,61 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5123070595167282700, guid: 36d84489736ad54419863049c7a1c7d0, type: 3}
   m_PrefabInstance: {fileID: 1232866504}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1238321738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1238321740}
+  - component: {fileID: 1238321739}
+  m_Layer: 0
+  m_Name: ObjectPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1238321739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238321738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9b73cf27aa81ee40aca20beec7d4f2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - objectPrefab: {fileID: 2392861190401069044, guid: d9544c4bfa5e6b7408d712e3a9a8c095, type: 3}
+    poolSize: 250
+  - objectPrefab: {fileID: 5963988768942421301, guid: 751e4390361da894c80eabc18173e205, type: 3}
+    poolSize: 250
+  - objectPrefab: {fileID: 3431885971079371871, guid: f3a6e420905fb3e44bd0457061fb5459, type: 3}
+    poolSize: 250
+  - objectPrefab: {fileID: 5134362548507019068, guid: ab00c5707a207ba4b86aaf60f2f76b33, type: 3}
+    poolSize: 250
+  - objectPrefab: {fileID: 7468261361597574752, guid: 29857e76cf4c60f46827dc68c98e2447, type: 3}
+    poolSize: 150
+--- !u!4 &1238321740
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238321738}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1239609441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15321,7 +15422,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1600291358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15352,6 +15453,8 @@ MonoBehaviour:
   moneyStackCountX: 5
   moneyStackCountY: 10
   moneySpawnPoint: {fileID: 1769013427}
+  objectPool: {fileID: 0}
+  poolValue: 0
   duration: 0
   strength: 0
   vibrato: 0
@@ -16041,7 +16144,7 @@ GameObject:
   m_Layer: 0
   m_Name: SpawnPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -16842,7 +16945,7 @@ GameObject:
   m_Layer: 0
   m_Name: MoneySpawnPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -17436,7 +17539,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1837919264
 Transform:
   m_ObjectHideFlags: 0
@@ -17489,6 +17592,8 @@ MonoBehaviour:
   moneyStackCountX: 5
   moneyStackCountY: 10
   moneySpawnPoint: {fileID: 294433819}
+  objectPool: {fileID: 0}
+  poolValue: 0
   duration: 0
   strength: 0
   vibrato: 0
@@ -20500,7 +20605,7 @@ GameObject:
   m_Layer: 0
   m_Name: GivePoint
   m_TagString: Untagged
-  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -23123,10 +23228,13 @@ MonoBehaviour:
   maxFruit: 150
   stackCount: 15
   spawnPoint: {fileID: 711121994}
+  isWorking: 0
+  objectPool: {fileID: 1238321739}
+  poolValue: 0
   jumpFruitObject: {fileID: 3682534250271711464}
   jumpPower: 4
   jumpCount: 1
-  duration: 0.2
+  duration: 0.3
 --- !u!65 &3222596852990691480
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24475,6 +24583,8 @@ MonoBehaviour:
   collectPoint: {fileID: 817075729}
   fruitBetween: 8
   fruitCollectLimit: 40
+  objectPool: {fileID: 1238321739}
+  poolValue: 0
 --- !u!114 &4458296079383859339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25876,6 +25986,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shop
       objectReference: {fileID: 0}
+    - target: {fileID: 6170174808440433752, guid: 0cc5aed7ce5bfe441ae840dfa110b871, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6170174809593121189, guid: 0cc5aed7ce5bfe441ae840dfa110b871, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284814200577390101, guid: 0cc5aed7ce5bfe441ae840dfa110b871, type: 3}
+      propertyPath: objectPool
+      value: 
+      objectReference: {fileID: 1238321739}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0cc5aed7ce5bfe441ae840dfa110b871, type: 3}
 --- !u!4 &6199005431454746164
@@ -26407,6 +26529,7 @@ GameObject:
   - component: {fileID: 6629204853468344195}
   - component: {fileID: 6629204853471276963}
   - component: {fileID: 6629204853470244323}
+  - component: {fileID: 6629204853471276964}
   m_Layer: 0
   m_Name: PalmTree
   m_TagString: Untagged
@@ -26479,6 +26602,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6629204853468060579}
   m_Mesh: {fileID: 4300000, guid: b90ff7e3d8926e44b8c08f957d58ecd0, type: 3}
+--- !u!114 &6629204853471276964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6629204853468060579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 720e61a1481f38a41adf5053e506eb3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.5
+  strength: 1
+  vibrato: 5
+  randomness: 10
+  shakeTime: 1
 --- !u!4 &6646881411729952008
 Transform:
   m_ObjectHideFlags: 0
@@ -27579,6 +27719,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 720e61a1481f38a41adf5053e506eb3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  duration: 0.5
+  strength: 1
+  vibrato: 5
+  randomness: 10
+  shakeTime: 1
 --- !u!4 &7589617723482302121
 Transform:
   m_ObjectHideFlags: 0

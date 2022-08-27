@@ -9,6 +9,10 @@ public class CollectManager : MonoBehaviour
     [SerializeField] private Transform collectPoint;  // Meyvelerin toplanacaðý pozisyon
     [SerializeField] private float fruitBetween = 10f;  //Meyveler arasý mesafe
     [SerializeField] private int fruitCollectLimit = 10; // Karakterin toplayabileceði meyve sayýsý
+    [Space]
+    [Header("Object Pool")]
+    [SerializeField] private ObjectPool objectPool = null;
+    [SerializeField] private int poolValue = 0;
 
     private void OnEnable()
     {
@@ -23,12 +27,14 @@ public class CollectManager : MonoBehaviour
     }
     private void GetFruit()
     {
-        // Meyve toplama fonksiyonu
+        // Meyve toplama fonksiyonu (Farmerden)
+        // #objectPool ile ekleme
         if (fruitList.Count <= fruitCollectLimit)
         {
+            poolValue = TriggerEventManager.farmerManager.publicpoolValue;  // poolValue deðeri FarmerField alanýnda üretilen poolObjectin dizi numarýsýný alýr ve o objeyi seçer
             // Eðer karakterin topladðý meyve sayýsý fruitCollectLimit sayýsýndan az ise toplar
-            GameObject newCollectFruit = Instantiate(TriggerEventManager.farmerManager.fruitPrefab,collectPoint);   // Yeni Meyve oluþtur
-            newCollectFruit.name = TriggerEventManager.farmerManager.fruitPrefab.name;
+            GameObject newCollectFruit = objectPool.GetPooledObject(poolValue);    // "ObjectPool" scriptinden yeni nesne çeker ve aktif hale getirirr
+            newCollectFruit.transform.parent = collectPoint;    // Aktif olan objeyi collectPoint çocuðu yapar 
             newCollectFruit.transform.position = new Vector3(collectPoint.position.x,
                 ((float)fruitList.Count / fruitBetween) + collectPoint.position.y,
                 collectPoint.position.z);    // Yeni Fruit objesini pozisyonu belirlenir    
@@ -43,12 +49,15 @@ public class CollectManager : MonoBehaviour
     }
     public void RemoveLastFruit()
     {
-        // Karaket FarmerField alanýnda meyve topladýðýnda son oluþturulan meyveyi toplar ve silinir
+        // Karaker FarmerField alanýnda meyve topladýðýnda son oluþturulan meyveyi toplar ve silinir
         if (fruitList.Count > 0)
         {
-            // Eðer toplanacak meyve var ise son meyveyi sil
-            Destroy(fruitList[fruitList.Count - 1]);
-            fruitList.RemoveAt(fruitList.Count - 1);
+            // Eðer toplanacak meyve var ise son meyveyi sil          
+            // #objectPool ile silme
+            objectPool.SetPooledObject(fruitList[fruitList.Count - 1], poolValue);  // objectPool ile aktif hale gelen objeyi pasif hale getirir
+            fruitList[fruitList.Count - 1].transform.parent = GameObject.Find("FruitObjects").gameObject.transform; 
+            // Pasif olan objeyi tekrar FruitObjects çocuðu yapar - objecool döngü halinde çalýþmasý için  
+            fruitList.RemoveAt(fruitList.Count - 1);    // fruitList listesinden siler
         }
     }
     public void GiveShopFruit()
