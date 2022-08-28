@@ -47,6 +47,7 @@ public class BuyManager : MonoBehaviour
         {
             totalMoney += 5;    // Para deðerini arttýr
             TriggerEventManager.shopManager.RemoveLastMoney();  // Her para kazanýldýðýnda money listesindeki paralar çýkarýlýr
+            AudioController.audioControllerInstance.Play("MoneySound"); // Her para toplandýðýnda ses çalýþýr
         }        
     }
 }

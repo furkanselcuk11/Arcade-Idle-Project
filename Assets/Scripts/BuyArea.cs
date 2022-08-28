@@ -41,6 +41,7 @@ public class BuyArea : MonoBehaviour
                 buyObject.SetActive(false); // Satýn alma triggerini pasif yapar
                 farmerAndShopObject.SetActive(true);    // Satýn alýnan öðeyi aktif hale getir
                 farmerAndShopObject.transform.DOShakeScale(duration, strength, vibrato, randomness);   // Dotween ile Paranýn Scale deðerini büyütüp küçültür
+                AudioController.audioControllerInstance.Play("BuyAreaSound"); // Yeni alan satýn alýndýðýnda ses çalýþýr
                 this.enabled = false;   // Satýn alma iþlemi tamamlanýnca kodu kapat
             }
         }

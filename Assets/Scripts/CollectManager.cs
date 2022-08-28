@@ -39,6 +39,7 @@ public class CollectManager : MonoBehaviour
                 ((float)fruitList.Count / fruitBetween) + collectPoint.position.y,
                 collectPoint.position.z);    // Yeni Fruit objesini pozisyonu belirlenir    
             fruitList.Add(newCollectFruit); // Yeni oluþturulan meyveyi fruitList listesine ekle
+            AudioController.audioControllerInstance.Play("FruitSound"); // Her meyve toplandýðýnda ses çalýþýr
             if (TriggerEventManager.farmerManager != null)
             {
                 // Temas ettði objenin içinde farmerManager varsa 

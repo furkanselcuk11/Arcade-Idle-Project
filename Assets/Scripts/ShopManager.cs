@@ -69,8 +69,7 @@ public class ShopManager : MonoBehaviour
                                 moneySpawnPoint.position.z + ((float)colCount / 2) - ((2 * rowCount) + ((float)rowCount / 2f)));
                     newMoney.transform.DOShakeScale(duration, strength, vibrato, randomness);   // Dotween ile Paranýn Scale deðerini büyütüp küçültür
                     moneyList.Add(newMoney); // Yeni oluþturulan parayý moneyList listesine ekle                
-                    RemoveLastFruit();
-                
+                    RemoveLastFruit();                
             }            
             yield return new WaitForSeconds(moneySpawnerTime);
         }        
@@ -109,6 +108,7 @@ public class ShopManager : MonoBehaviour
                         givePoint.position.y + 0.1f,
                         givePoint.position.z + ((float)colCount / 6));
             fruitList.Add(newGiveFruit); // Yeni oluþturulan meyveyi fruitList listesine ekle
+            AudioController.audioControllerInstance.Play("FruitSound"); // Her meyve toplandýðýnda ses çalýþýr
             if (fruitList.Count >= maxFruit)
             {
                 isWorking = false;  // Eðer toplam çýkarýlan Fruit Sayýsý maxFruit sayýsýna büyük eþit ise çalýþma pasif olur                

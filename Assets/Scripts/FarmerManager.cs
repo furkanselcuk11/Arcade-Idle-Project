@@ -56,6 +56,7 @@ public class FarmerManager : MonoBehaviour
                     spawnPoint.position.z + ((float)colCount / 3));
                 fruitList.Add(newFruit); // Yeni oluþturulan meyveyi fruitList listesine ekle
                 jumpFruitObject.transform.DOJump(new Vector3(newFruit.transform.position.x, 0f, newFruit.transform.position.z), jumpPower, jumpCount, duration); // Dotween ile yere düþmesi ayarlanýr
+                
                 if (fruitList.Count >= maxFruit)
                 {
                     isWorking = false;  // Eðer toplam çýkarýlan Fruit Sayýsý maxFruit sayýsýna büyük eþit ise çalýþma pasif olur
