@@ -6,7 +6,7 @@ using DG.Tweening;
 public class ShopManager : MonoBehaviour
 {
     public List<GameObject> fruitList = new List<GameObject>(); // Oluþturulan meyvelerin tutulduðu liste
-    public List<GameObject> moneyList = new List<GameObject>(); // Oluþturulan meyvelerin tutulduðu liste
+    public List<GameObject> moneyList = new List<GameObject>(); // Oluþturulan paralarýn tutulduðu liste
     [Space]
     [Header("Shop Fruit Genarete")]
     [SerializeField] private GameObject fruitPrefab;    // Oluþturulacak meyve
@@ -15,6 +15,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private int stackCount = 10;   // X ekseninde oluþacak  meyve sayýsý
     public int maxFruit = 150;   // Max verilecek meyve sayýsý
     [SerializeField] private Transform givePoint;  // Meyvelerin Çýkarýlacaðý pozisyon
+    [SerializeField] private GameObject fullFruit;
     bool isWorking;
     [Space]
     [Header("Shop Money Genarete")]
@@ -24,7 +25,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private float moneyBetween = 4f;  //Meyveler arasý mesafe
     [SerializeField] private int moneyStackCountX = 5;   // X ekseninde oluþacak para sayýsý
     [SerializeField] private int moneyStackCountY = 25;   // Y ekseninde oluþacak para sayýsý
-    [SerializeField] private int maxMoney = 150;   // Max verilecek para sayýsý
+    [SerializeField] private int maxMoney = 100;   // Max verilecek para sayýsý
     [SerializeField] private Transform moneySpawnPoint;  // Paralarýn Çýkarýlacaðý pozisyon
     bool isMoneySpawner;
     [Space]
@@ -47,15 +48,21 @@ public class ShopManager : MonoBehaviour
     {        
         while (true)
         {
-            if (fruitList.Count > 0)
+            if (moneyList.Count < maxMoney)
+            {
+                isMoneySpawner = true;
+            }
+            else
+            {
+                isMoneySpawner = false;
+            }
+            if (fruitList.Count > 0 && isMoneySpawner)
             {
                 //Eðer Shop'ta meyve varsa para üret
                 float moneyCount = moneyList.Count;
                 int colCount = (int)moneyCount / moneyStackCountX;    // Bir sýrada oluþacak para sayýsý
                 int rowCount = (int)moneyCount / moneyStackCountY;    // Bir sýrada oluþacak para sayýsý
-                if (isMoneySpawner)
-                {
-                    // #objectPool ile ekleme
+                // #objectPool ile ekleme
                     GameObject newMoney = objectPool.GetPooledObject(0);    // "ObjectPool" scriptinden yeni nesne çeker ve aktif hale getirir
                     newMoney.transform.position = new Vector3(moneySpawnPoint.position.x + ((moneyCount % moneyStackCountX) / moneyBetween),
                                 moneySpawnPoint.position.y + ((float)rowCount / 10) + 0.05f,
@@ -63,13 +70,8 @@ public class ShopManager : MonoBehaviour
                     newMoney.transform.DOShakeScale(duration, strength, vibrato, randomness);   // Dotween ile Paranýn Scale deðerini büyütüp küçültür
                     moneyList.Add(newMoney); // Yeni oluþturulan parayý moneyList listesine ekle                
                     RemoveLastFruit();
-                }
-                else if (moneyList.Count<maxMoney)
-                {
-                    isMoneySpawner = true;
-                }
                 
-            }
+            }            
             yield return new WaitForSeconds(moneySpawnerTime);
         }        
     }
@@ -83,6 +85,14 @@ public class ShopManager : MonoBehaviour
         else
         {
             rotateMoney.SetActive(false);
+        }
+        if (fruitList.Count >= maxFruit)
+        {
+            fullFruit.SetActive(true);
+        }
+        else
+        {
+            fullFruit.SetActive(false);
         }
     }
     public void GetFruit()
@@ -99,12 +109,15 @@ public class ShopManager : MonoBehaviour
                         givePoint.position.y + 0.1f,
                         givePoint.position.z + ((float)colCount / 6));
             fruitList.Add(newGiveFruit); // Yeni oluþturulan meyveyi fruitList listesine ekle
+            if (fruitList.Count >= maxFruit)
+            {
+                isWorking = false;  // Eðer toplam çýkarýlan Fruit Sayýsý maxFruit sayýsýna büyük eþit ise çalýþma pasif olur                
+            }
         }
         else if (fruitList.Count < maxFruit)
         {
-            isWorking = true;   // Eðer toplam çýkarýlan Fruit Sayýsý maxFruit sayýsýndan az ise çalýþma aktif olur
+            isWorking = true;   // Eðer toplam çýkarýlan Fruit Sayýsý maxFruit sayýsýndan az ise çalýþma aktif olur                  
         }
-        
     }
     public void RemoveLastFruit()
     {

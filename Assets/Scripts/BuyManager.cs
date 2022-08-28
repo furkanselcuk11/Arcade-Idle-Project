@@ -5,6 +5,11 @@ using UnityEngine;
 public class BuyManager : MonoBehaviour
 {
     [SerializeField] private int totalMoney=0;
+    public int publicTotalMoney
+    {
+        get { return totalMoney; }
+        set { totalMoney = value; }
+    }
 
     private void OnEnable()
     {
