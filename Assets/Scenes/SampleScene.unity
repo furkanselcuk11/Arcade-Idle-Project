@@ -2215,7 +2215,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 494394997}
   isWorking: 0
   objectPool: {fileID: 1238321739}
-  poolValue: 2
+  poolValue: 3
   jumpFruitObject: {fileID: 6313616518371778082}
   jumpPower: 0.5
   jumpCount: 1
@@ -4305,6 +4305,7 @@ MonoBehaviour:
   - {fileID: 5134362548507019068, guid: ab00c5707a207ba4b86aaf60f2f76b33, type: 3}
   fruitBetween: 6
   stackCount: 10
+  maxFruit: 150
   givePoint: {fileID: 653822177}
   moneyPrefab: {fileID: 7468261361597574752, guid: 29857e76cf4c60f46827dc68c98e2447, type: 3}
   rotateMoney: {fileID: 121494814}
@@ -4312,6 +4313,7 @@ MonoBehaviour:
   moneyBetween: 4
   moneyStackCountX: 5
   moneyStackCountY: 10
+  maxMoney: 150
   moneySpawnPoint: {fileID: 410711040}
   objectPool: {fileID: 0}
   poolValue: 0
@@ -7465,7 +7467,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 817075728}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.8, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0.8, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8583,7 +8585,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 146702270}
   isWorking: 0
   objectPool: {fileID: 1238321739}
-  poolValue: 3
+  poolValue: 4
   jumpFruitObject: {fileID: 993093072842159488}
   jumpPower: 0.5
   jumpCount: 1
@@ -11473,7 +11475,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 1697183675}
   isWorking: 0
   objectPool: {fileID: 1238321739}
-  poolValue: 1
+  poolValue: 2
   jumpFruitObject: {fileID: 1475993457}
   jumpPower: 2
   jumpCount: 1
@@ -11637,16 +11639,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
-  - objectPrefab: {fileID: 2392861190401069044, guid: d9544c4bfa5e6b7408d712e3a9a8c095, type: 3}
-    poolSize: 250
-  - objectPrefab: {fileID: 5963988768942421301, guid: 751e4390361da894c80eabc18173e205, type: 3}
-    poolSize: 250
-  - objectPrefab: {fileID: 3431885971079371871, guid: f3a6e420905fb3e44bd0457061fb5459, type: 3}
-    poolSize: 250
-  - objectPrefab: {fileID: 5134362548507019068, guid: ab00c5707a207ba4b86aaf60f2f76b33, type: 3}
-    poolSize: 250
   - objectPrefab: {fileID: 7468261361597574752, guid: 29857e76cf4c60f46827dc68c98e2447, type: 3}
     poolSize: 150
+  - objectPrefab: {fileID: 2392861190401069044, guid: d9544c4bfa5e6b7408d712e3a9a8c095, type: 3}
+    poolSize: 150
+  - objectPrefab: {fileID: 5963988768942421301, guid: 751e4390361da894c80eabc18173e205, type: 3}
+    poolSize: 150
+  - objectPrefab: {fileID: 3431885971079371871, guid: f3a6e420905fb3e44bd0457061fb5459, type: 3}
+    poolSize: 150
+  - objectPrefab: {fileID: 5134362548507019068, guid: ab00c5707a207ba4b86aaf60f2f76b33, type: 3}
+    poolSize: 150
+  - objectPrefab: {fileID: 2392861190401069044, guid: d9544c4bfa5e6b7408d712e3a9a8c095, type: 3}
+    poolSize: 50
+  - objectPrefab: {fileID: 5963988768942421301, guid: 751e4390361da894c80eabc18173e205, type: 3}
+    poolSize: 50
+  - objectPrefab: {fileID: 3431885971079371871, guid: f3a6e420905fb3e44bd0457061fb5459, type: 3}
+    poolSize: 50
+  - objectPrefab: {fileID: 5134362548507019068, guid: ab00c5707a207ba4b86aaf60f2f76b33, type: 3}
+    poolSize: 50
+  - objectPrefab: {fileID: 2392861190401069044, guid: d9544c4bfa5e6b7408d712e3a9a8c095, type: 3}
+    poolSize: 100
+  - objectPrefab: {fileID: 5963988768942421301, guid: 751e4390361da894c80eabc18173e205, type: 3}
+    poolSize: 100
+  - objectPrefab: {fileID: 3431885971079371871, guid: f3a6e420905fb3e44bd0457061fb5459, type: 3}
+    poolSize: 100
+  - objectPrefab: {fileID: 5134362548507019068, guid: ab00c5707a207ba4b86aaf60f2f76b33, type: 3}
+    poolSize: 100
 --- !u!4 &1238321740
 Transform:
   m_ObjectHideFlags: 0
@@ -15445,6 +15463,7 @@ MonoBehaviour:
   - {fileID: 5134362548507019068, guid: ab00c5707a207ba4b86aaf60f2f76b33, type: 3}
   fruitBetween: 6
   stackCount: 10
+  maxFruit: 150
   givePoint: {fileID: 2134921889}
   moneyPrefab: {fileID: 7468261361597574752, guid: 29857e76cf4c60f46827dc68c98e2447, type: 3}
   rotateMoney: {fileID: 1584456783}
@@ -15452,6 +15471,7 @@ MonoBehaviour:
   moneyBetween: 4
   moneyStackCountX: 5
   moneyStackCountY: 10
+  maxMoney: 150
   moneySpawnPoint: {fileID: 1769013427}
   objectPool: {fileID: 0}
   poolValue: 0
@@ -17584,6 +17604,7 @@ MonoBehaviour:
   - {fileID: 5134362548507019068, guid: ab00c5707a207ba4b86aaf60f2f76b33, type: 3}
   fruitBetween: 6
   stackCount: 10
+  maxFruit: 150
   givePoint: {fileID: 1583417132}
   moneyPrefab: {fileID: 7468261361597574752, guid: 29857e76cf4c60f46827dc68c98e2447, type: 3}
   rotateMoney: {fileID: 1831932443}
@@ -17591,6 +17612,7 @@ MonoBehaviour:
   moneyBetween: 4
   moneyStackCountX: 5
   moneyStackCountY: 10
+  maxMoney: 150
   moneySpawnPoint: {fileID: 294433819}
   objectPool: {fileID: 0}
   poolValue: 0
@@ -23230,7 +23252,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 711121994}
   isWorking: 0
   objectPool: {fileID: 1238321739}
-  poolValue: 0
+  poolValue: 1
   jumpFruitObject: {fileID: 3682534250271711464}
   jumpPower: 4
   jumpCount: 1
@@ -24582,7 +24604,7 @@ MonoBehaviour:
   fruitPrefab: {fileID: 0}
   collectPoint: {fileID: 817075729}
   fruitBetween: 8
-  fruitCollectLimit: 40
+  fruitCollectLimit: 10
   objectPool: {fileID: 1238321739}
   poolValue: 0
 --- !u!114 &4458296079383859339
@@ -25993,6 +26015,10 @@ PrefabInstance:
     - target: {fileID: 6170174809593121189, guid: 0cc5aed7ce5bfe441ae840dfa110b871, type: 3}
       propertyPath: m_Icon
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8284814200577390101, guid: 0cc5aed7ce5bfe441ae840dfa110b871, type: 3}
+      propertyPath: maxFruit
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8284814200577390101, guid: 0cc5aed7ce5bfe441ae840dfa110b871, type: 3}
       propertyPath: objectPool

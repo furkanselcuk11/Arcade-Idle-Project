@@ -29,9 +29,9 @@ public class CollectManager : MonoBehaviour
     {
         // Meyve toplama fonksiyonu (Farmerden)
         // #objectPool ile ekleme
-        if (fruitList.Count <= fruitCollectLimit)
+        if (fruitList.Count < fruitCollectLimit)
         {
-            poolValue = TriggerEventManager.farmerManager.publicpoolValue;  // poolValue deðeri FarmerField alanýnda üretilen poolObjectin dizi numarýsýný alýr ve o objeyi seçer
+            poolValue = TriggerEventManager.farmerManager.publicpoolValue+4;  // poolValue deðeri FarmerField alanýnda üretilen poolObjectin dizi numarýsýný alýr ve o objeyi seçer
             // Eðer karakterin topladðý meyve sayýsý fruitCollectLimit sayýsýndan az ise toplar
             GameObject newCollectFruit = objectPool.GetPooledObject(poolValue);    // "ObjectPool" scriptinden yeni nesne çeker ve aktif hale getirirr
             newCollectFruit.transform.parent = collectPoint;    // Aktif olan objeyi collectPoint çocuðu yapar 
@@ -66,8 +66,12 @@ public class CollectManager : MonoBehaviour
         if (fruitList.Count > 0)
         {
             // Eðer býrakýlack meyve varsa shopManager objesinden GetFruit fonksiyonu çalýþsýn ve meyve býraksýn
-            TriggerEventManager.shopManager.GetFruit();
-            RemoveLastFruit();  // Toplanan meyveyi listeden siler
+            if (TriggerEventManager.shopManager.fruitList.Count < TriggerEventManager.shopManager.maxFruit)
+            {
+                TriggerEventManager.shopManager.GetFruit();
+                RemoveLastFruit();  // Toplanan meyveyi listeden siler
+            }
+            
         }
     }
 }
