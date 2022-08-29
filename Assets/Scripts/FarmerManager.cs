@@ -29,6 +29,7 @@ public class FarmerManager : MonoBehaviour
     [Space]
     [Header("Fruit Jump Dotween")]
     [SerializeField] private GameObject jumpFruitObject;
+    [SerializeField] private Vector3 jumpFruitObjectStartPositoin;
     [SerializeField] private float jumpPower;    // Zýplama gücü
     [SerializeField] private int jumpCount;    // Zýplama sayýsý
     [SerializeField] private float duration;   // Zýplama süresi
@@ -54,9 +55,10 @@ public class FarmerManager : MonoBehaviour
                 newFruit.transform.position = new Vector3(spawnPoint.position.x + ((fruitCount % stackCount) / fruitBetween),
                     spawnPoint.position.y + 0.1f,
                     spawnPoint.position.z + ((float)colCount / 3));
-                fruitList.Add(newFruit); // Yeni oluþturulan meyveyi fruitList listesine ekle
-                jumpFruitObject.transform.DOJump(new Vector3(newFruit.transform.position.x, 0f, newFruit.transform.position.z), jumpPower, jumpCount, duration); // Dotween ile yere düþmesi ayarlanýr
-                
+                fruitList.Add(newFruit); // Yeni oluþturulan meyveyi fruitList listesine ekle                
+                jumpFruitObject.transform.DOMove(new Vector3(newFruit.transform.position.x, 0f, newFruit.transform.position.z), duration);
+                jumpFruitObject.transform.localPosition = jumpFruitObjectStartPositoin;
+
                 if (fruitList.Count >= maxFruit)
                 {
                     isWorking = false;  // Eðer toplam çýkarýlan Fruit Sayýsý maxFruit sayýsýna büyük eþit ise çalýþma pasif olur
