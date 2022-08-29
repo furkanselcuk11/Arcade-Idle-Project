@@ -5,7 +5,6 @@ using UnityEngine;
 public class CollectManager : MonoBehaviour
 {
     public List<GameObject> fruitList = new List<GameObject>(); // Toplanan meyvelerin tutulduðu liste
-    [SerializeField] private GameObject fruitPrefab;    // Oluþturulacak obje
     [SerializeField] private Transform collectPoint;  // Meyvelerin toplanacaðý pozisyon
     [SerializeField] private float fruitBetween = 10f;  //Meyveler arasý mesafe
     [SerializeField] private int fruitCollectLimit = 10; // Karakterin toplayabileceði meyve sayýsý

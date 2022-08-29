@@ -8,7 +8,6 @@ public class FarmerManager : MonoBehaviour
     public List<GameObject> fruitList = new List<GameObject>(); // Oluþturulan meyvelerin tutulduðu liste    
     [Space]
     [Header("Fruit Spawner")]
-    public GameObject fruitPrefab;    // Oluþturulacak obje
     [SerializeField] private float spawnerTime = 0.5f;  //Meyve oluþturma süresi
     [SerializeField] private float fruitBetween = 10f;  //Meyveler arasý mesafe
     [SerializeField] private int maxFruit = 50; // Toplam çýkarilacak meyve sayýsý

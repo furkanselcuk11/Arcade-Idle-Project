@@ -329,7 +329,7 @@ MonoBehaviour:
   fullFruit: {fileID: 7007055017590541215}
   moneyPrefab: {fileID: 7468261361597574752, guid: 29857e76cf4c60f46827dc68c98e2447, type: 3}
   rotateMoney: {fileID: 7151011222271846568}
-  moneySpawnerTime: 0.8
+  moneySpawnerTime: 1
   moneyBetween: 4
   moneyStackCountX: 5
   moneyStackCountY: 25

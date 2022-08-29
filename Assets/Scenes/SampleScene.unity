@@ -4447,7 +4447,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &233957105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4462,7 +4462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fps: 0
   fpsText: {fileID: 316239304}
-  fpsSecond: 1
+  fpsSecond: 0.1
 --- !u!4 &233957106
 Transform:
   m_ObjectHideFlags: 0
@@ -4541,7 +4541,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruitList: []
-  fruitPrefab: {fileID: 3431885971079371871, guid: f3a6e420905fb3e44bd0457061fb5459, type: 3}
   spawnerTime: 0.5
   fruitBetween: 4
   maxFruit: 150
@@ -10160,7 +10159,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh24042
+  m_Name: pb_Mesh389230
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10619,7 +10618,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.25
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -10668,7 +10667,7 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
-  m_ShadowAngle: 0
+  m_ShadowAngle: 0.3
 --- !u!4 &705507995
 Transform:
   m_ObjectHideFlags: 0
@@ -11376,7 +11375,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 2
   m_IsActive: 1
 --- !u!4 &759632373
 Transform:
@@ -11432,7 +11431,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 759399829}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -13115,7 +13114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruitList: []
-  fruitPrefab: {fileID: 5134362548507019068, guid: ab00c5707a207ba4b86aaf60f2f76b33, type: 3}
   spawnerTime: 0.5
   fruitBetween: 4
   maxFruit: 150
@@ -13740,7 +13738,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 100
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -16214,7 +16212,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruitList: []
-  fruitPrefab: {fileID: 5963988768942421301, guid: 751e4390361da894c80eabc18173e205, type: 3}
   spawnerTime: 0.5
   fruitBetween: 4
   maxFruit: 150
@@ -16228,7 +16225,7 @@ MonoBehaviour:
   jumpFruitObjectStartPositoin: {x: 0, y: 2.5, z: -1.3}
   jumpPower: 2
   jumpCount: 1
-  duration: 0.3
+  duration: 0.5
 --- !u!1 &1199082017
 GameObject:
   m_ObjectHideFlags: 0
@@ -29773,7 +29770,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruitList: []
-  fruitPrefab: {fileID: 2392861190401069044, guid: d9544c4bfa5e6b7408d712e3a9a8c095, type: 3}
   spawnerTime: 0.5
   fruitBetween: 4
   maxFruit: 150
@@ -29787,7 +29783,7 @@ MonoBehaviour:
   jumpFruitObjectStartPositoin: {x: 0, y: 3, z: -1}
   jumpPower: 4
   jumpCount: 1
-  duration: 0.3
+  duration: 0.5
 --- !u!65 &3222596852990691480
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31132,7 +31128,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fruitList: []
-  fruitPrefab: {fileID: 0}
   collectPoint: {fileID: 817075729}
   fruitBetween: 6
   fruitCollectLimit: 10
@@ -31150,7 +31145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebb0d39921558e64dabf724bb36cef2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fruitCollectTime: 0.1
+  fruitCollectTime: 0.3
 --- !u!114 &4458296079383859340
 MonoBehaviour:
   m_ObjectHideFlags: 0

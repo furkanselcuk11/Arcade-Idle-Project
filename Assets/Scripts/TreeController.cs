@@ -14,6 +14,7 @@ public class TreeController : MonoBehaviour
     [SerializeField] private float randomness;  // Randomluk
     [SerializeField] private float shakeTime = 0.5f;
     private Animator anim;
+    private bool isWork;
     void Start()
     {
         this.farmer = this.transform.parent.gameObject.transform.GetComponent<FarmerManager>().gameObject;

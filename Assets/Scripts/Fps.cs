@@ -6,10 +6,14 @@ public class Fps : MonoBehaviour
 {
     public float fps;
     public TextMeshProUGUI fpsText;
-    public float fpsSecond=1f;
+    public float fpsSecond=0.1f;
+    private void Awake()
+    {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
+    }
     void Start()
     {
-        //InvokeRepeating(nameof(GetFPS), 1, 1);
         StartCoroutine(nameof(GetFPS));
     }
     IEnumerator GetFPS()

@@ -9,8 +9,6 @@ public class ShopManager : MonoBehaviour
     public List<GameObject> moneyList = new List<GameObject>(); // Oluþturulan paralarýn tutulduðu liste
     [Space]
     [Header("Shop Fruit Genarete")]
-    [SerializeField] private GameObject fruitPrefab;    // Oluþturulacak meyve
-    [SerializeField] private GameObject[] fruitPrefabs;    // Oluþturulacak meyvelerin listesi
     [SerializeField] private float fruitBetween=6;
     [SerializeField] private int stackCount = 10;   // X ekseninde oluþacak  meyve sayýsý
     public int maxFruit = 150;   // Max verilecek meyve sayýsý
@@ -69,8 +67,8 @@ public class ShopManager : MonoBehaviour
                                 moneySpawnPoint.position.z + ((float)colCount / 2) - ((2 * rowCount) + ((float)rowCount / 2f)));
                     newMoney.transform.DOShakeScale(duration, strength, vibrato, randomness);   // Dotween ile Paranýn Scale deðerini büyütüp küçültür
                     moneyList.Add(newMoney); // Yeni oluþturulan parayý moneyList listesine ekle                
-                    RemoveLastFruit();                
-            }            
+                    RemoveLastFruit();
+            }
             yield return new WaitForSeconds(moneySpawnerTime);
         }        
     }
@@ -147,22 +145,18 @@ public class ShopManager : MonoBehaviour
     {
         if (TriggerEventManager.collectManager.fruitList[TriggerEventManager.collectManager.fruitList.Count - 1].gameObject.name == "Apple")
         {
-            fruitPrefab = fruitPrefabs[0];
             poolValue = 9;
         }
         if (TriggerEventManager.collectManager.fruitList[TriggerEventManager.collectManager.fruitList.Count - 1].gameObject.name == "Banana")
         {
-            fruitPrefab = fruitPrefabs[1];
             poolValue = 10;
         }
         if (TriggerEventManager.collectManager.fruitList[TriggerEventManager.collectManager.fruitList.Count - 1].gameObject.name == "Carrot")
         {
-            fruitPrefab = fruitPrefabs[2];
             poolValue = 11;
         }
         if (TriggerEventManager.collectManager.fruitList[TriggerEventManager.collectManager.fruitList.Count - 1].gameObject.name == "Mushroom")
         {
-            fruitPrefab = fruitPrefabs[3];
             poolValue = 12;
         }
     }
