@@ -1,9 +1,9 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BuyManager : MonoBehaviour
-{
+{    
     [SerializeField] private int totalMoney=0;
     public int publicTotalMoney
     {
@@ -21,21 +21,13 @@ public class BuyManager : MonoBehaviour
         TriggerEventManager.OnMoneyCollected -= IncreaseMoney;
         TriggerEventManager.OnBuyShopAndFarmer -= BuyArea;
     }
-    void Start()
-    {
-        
-    }
-    
-    void Update()
-    {
-        
-    }
     void BuyArea()
     {
         if (TriggerEventManager.buyArea != null)
         {
-            if (totalMoney >= 1)
+            if (totalMoney >= 1 && TriggerEventManager.buyArea.areaLocked)
             {
+                // Eğer karakterin parası varsa ve satın alınacak alan açılmamışsa
                 TriggerEventManager.buyArea.Buy(1);
                 totalMoney -= 1;
             }
@@ -45,9 +37,9 @@ public class BuyManager : MonoBehaviour
     {
         if (TriggerEventManager.shopManager.moneyList.Count > 0)
         {
-            totalMoney += 5;    // Para de�erini artt�r
-            TriggerEventManager.shopManager.RemoveLastMoney();  // Her para kazan�ld���nda money listesindeki paralar ��kar�l�r
-            AudioController.audioControllerInstance.Play("MoneySound"); // Her para topland���nda ses �al���r
+            totalMoney += 5;    // Para değerini arttır
+            TriggerEventManager.shopManager.RemoveLastMoney();  // Her para kazanıldığında money listesindeki paralar çıkarılır
+            AudioController.audioControllerInstance.Play("MoneySound"); // Her para toplandığında ses çalışır
         }        
     }
 }

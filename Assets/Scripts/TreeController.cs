@@ -24,6 +24,7 @@ public class TreeController : MonoBehaviour
     {
         if (farmer.gameObject.GetComponent<FarmerManager>().isWorking)
         {
+            // Eðer Farmer alanýnda meyve üretimi var ise Farmer karakterinin isWorking animsyonu çalýþýr
             this.anim.SetBool("isWorking", true);
         }
         else
