@@ -29,9 +29,7 @@ public class FarmerManager : MonoBehaviour
     [Header("Fruit Jump Dotween")]
     [SerializeField] private GameObject jumpFruitObject;
     [SerializeField] private Vector3 jumpFruitObjectStartPositoin;
-    [SerializeField] private float jumpPower;    // Zýplama gücü
-    [SerializeField] private int jumpCount;    // Zýplama sayýsý
-    [SerializeField] private float duration;   // Zýplama süresi
+    [SerializeField] private float duration;   // Düþme süresi
     void Start()
     {
         StartCoroutine(nameof(FarmerFruitSpawner));

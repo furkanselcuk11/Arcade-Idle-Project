@@ -47,6 +47,7 @@ public class BuyArea : MonoBehaviour
             areaText.text = "$ " + (buyAreaType.cost - buyAreaType.currentMoney);   // Kalan para mitarnı göster
             progress = (buyAreaType.currentMoney / buyAreaType.cost);   
             progressImage.fillAmount = progress;    // Ödenen miktarın bar gösterimi
+            SaveManager.savemanagerInstance.SaveGame();
 
             if (buyAreaType.currentMoney == buyAreaType.cost)
             {
@@ -57,6 +58,7 @@ public class BuyArea : MonoBehaviour
                 this.farmerAndShopObject.SetActive(true);    // Satın alınan öğeyi aktif hale getir
                 this.farmerAndShopObject.transform.DOShakeScale(duration, strength, vibrato, randomness);   // Dotween ile Açılan binanın Scale değerini büyütüp küçültür
                 AudioController.audioControllerInstance.Play("BuyAreaSound"); // Yeni alan satın alındığında ses çalışır
+                SaveManager.savemanagerInstance.SaveGame();
                 this.enabled = false;   // Satın alma işlemi tamamlanınca kodu kapat
             }
         }

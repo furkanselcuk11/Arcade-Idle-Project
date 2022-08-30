@@ -39,7 +39,8 @@ public class SaveManager : MonoBehaviour
             }
         }
     }
-    private void OnDisable()
+
+    public void SaveGame()
     {
         // Veri Kaydetme 
         Debug.Log("Veriler Kaydedildi...");

@@ -14115,7 +14115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02436ad9d2ba0334b8402de8a6fb9966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveName: ArcadeIdleSave
+  saveName: ArcadeIdleSaveGame
   objectsToSave:
   - {fileID: 11400000, guid: 032bd7e181342ef4e9862c5e4e2df1a7, type: 2}
   - {fileID: 11400000, guid: 84cc6f1e60d200745af005a4302db88f, type: 2}

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7bc355bacf205846becc6dee7fb3e35, type: 3}
   m_Name: Shop_3
   m_EditorClassIdentifier: 
-  _cost: 1000
+  _cost: 1500
   _currentMoney: 0
   _locked: 1
